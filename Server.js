@@ -6,7 +6,7 @@ const URI = "mongodb+srv://User01:User01@codecenter01010-zzf41.mongodb.net/test"
 
 var collection;
 var app = express();
-var port = process.env.PORT || 2222 ;
+var port = process.env.PORT;
 var client = new MongoClient(URI, {useNewUrlParser:true , useUnifiedTopology:true});
 
 app.get('/', function(req , res){
