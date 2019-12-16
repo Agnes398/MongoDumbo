@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-
+const ObjectId = require('mongodb').ObjectId;
 const URI = "mongodb+srv://User01:User01@codecenter01010-zzf41.mongodb.net/test";
 
 var collection;
@@ -12,12 +12,19 @@ var client = new MongoClient(URI, {useNewUrlParser:true , useUnifiedTopology:tru
 app.get('/notes' , function(req, res){
     collection.find({}).toArray((err, result) => {
         res.send(result);
-    })
-})
+    });
+});
+
+app.get('/notes/:id', function(req,res){
+    collection.findOne({"_id": new ObjectId(req.params.id)} , (err, result) => {
+        res.send(result);
+    });
+});
 
 app.get('/', function(req , res){
     res.send('I am alive');
-})
+});
+
 app.listen(port , function(){
     console.log('Server is running at port: ' + port )
     client.connect(err => {
