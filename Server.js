@@ -6,6 +6,7 @@ const URI = "mongodb+srv://User01:User01@codecenter01010-zzf41.mongodb.net/test"
 var app = express();
 
 var collection;
+var fetchedData;
 
 var port = process.env.PORT || 1337;
 var client = new MongoClient(URI, {useNewUrlParser:true , useUnifiedTopology:true});
@@ -13,24 +14,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.set("view engine", "ejs"); 
+app.set("views", __dirname + "/public/views")
+
+
 app.get('/notes' , function(req, res){
-    res.sendFile(__dirname + '/public/notes.html');
-    // collection.find({}).toArray((err, result) => {
-    //     res.send(result);
-    // });
-
     
-    //Skit i denna del
-    // var resultArray = [];
-    // var cursor = collection.find({});
-    // cursor.forEach(function(doc, err) {
-    //     resultArray.push(doc);
-    // });
-});
-
+    collection.find({}).toArray((err, result) => {
+        //fetchedData = result;
+        res.send(result);
+        });
+   // res.sendFile(__dirname +'/public/notes.html');
+    });
 app.get('/notes/:id', function(req,res){
     collection.findOne({"_id": new ObjectId(req.params.id)} , (err, result) => {
-        res.send(result);
+        result;
     });
 });
 
@@ -56,3 +54,4 @@ app.listen(port , function(){
         console.log("DB has been connected");
     });     
 });
+//module.exports= fetchedData;
