@@ -31,9 +31,14 @@
                 <textarea class="form-control text" id="exampleFormControlTextarea1" rows="3" name="content" placeholder="Today I met a..."></textarea>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary mb-2 text">Save</button>
+            <button type="submit" class="btn btn-primary mb-2 text" id="content">Save</button>
         </form>
     </div>
+    <script>
+        var inputdata = document.getElementById("content").innerHTML ;
+        console.log(inputdata);
+    </script>
+
 
 </body>
 </html> 
