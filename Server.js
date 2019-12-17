@@ -36,9 +36,8 @@ app.post('/add', function(req, res){
     collection.insertOne(item, function(err, result){
         res.send(item);
         console.log("Added new items to DB");
-    })
-    res.redirect('/public/showdata.html');
-    
+    });
+
    
       
 })
