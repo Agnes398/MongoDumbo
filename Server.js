@@ -4,10 +4,17 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
 const URI = "mongodb+srv://User01:User01@codecenter01010-zzf41.mongodb.net/test";
 
+
+
+
 var collection;
 var app = express();
 var port = process.env.PORT || 1337;
 var client = new MongoClient(URI, {useNewUrlParser:true , useUnifiedTopology:true});
+var testdataOne ;
+var testdataTwo;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/notes' , function(req, res){
     collection.find({}).toArray((err, result) => {
@@ -24,6 +31,18 @@ app.get('/notes/:id', function(req,res){
 app.get('/', function(req , res){
     res.send('I am alive');
 });
+app.post('/add', function(req, res){
+    var item = {
+        headline: req.body.headline,
+        content: req.body.content
+    };   
+    collection.insertOne(item, function(err, result){
+        res.send(item);
+        console.log("Added new items to DB");
+    })
+   
+      
+})
 
 app.listen(port , function(){
     console.log('Server is running at port: ' + port )
