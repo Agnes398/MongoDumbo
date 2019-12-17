@@ -11,3 +11,6 @@ header {
 .text {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+#savebutton {
+    margin-top: 10px;
+}

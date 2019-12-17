@@ -27,18 +27,15 @@
                   <input name="headline" type="text" class="form-control text" id="exampleFormControlInput1" placeholder="Title of Document">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1" class="text">Content</label>
+                <label for="exampleFormControlTextarea1" class="text" id="content">Content</label>
                 <textarea class="form-control text" id="exampleFormControlTextarea1" rows="3" name="content" placeholder="Today I met a..."></textarea>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary mb-2 text" id="content">Save</button>
+            <button id="savebutton" type="submit" class="btn btn-primary mb-2 text">Save</button>
+            <a href="notes" class="btn btn-info" role="button">Hello</a>
         </form>
+        
     </div>
-    <script>
-        var inputdata = document.getElementById("content").innerHTML ;
-        console.log(inputdata);
-    </script>
-
 
 </body>
 </html> 

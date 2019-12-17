@@ -14,9 +14,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/notes' , function(req, res){
-    collection.find({}).toArray((err, result) => {
-        res.send(result);
-    });
+    res.sendFile(__dirname + '/public/notes.html');
+    // collection.find({}).toArray((err, result) => {
+    //     res.send(result);
+    // });
+
+    
+    //Skit i denna del
+    // var resultArray = [];
+    // var cursor = collection.find({});
+    // cursor.forEach(function(doc, err) {
+    //     resultArray.push(doc);
+    // });
 });
 
 app.get('/notes/:id', function(req,res){
