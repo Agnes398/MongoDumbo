@@ -1,0 +1,13 @@
+.background {
+    background-color: rgb(220, 220, 220);
+    padding: 1%;
+}
+header {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    background-color: rgb(220, 220, 220);
+}
+.text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
